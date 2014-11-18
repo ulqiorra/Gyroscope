@@ -1,0 +1,12 @@
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\bin\Debug\SharpGLWinformsApplication1.exe.config
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\bin\Debug\SharpGLWinformsApplication1.exe
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\bin\Debug\SharpGLWinformsApplication1.pdb
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\bin\Debug\SharpGL.dll
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\bin\Debug\SharpGL.SceneGraph.dll
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\bin\Debug\SharpGL.WinForms.dll
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\obj\x86\Debug\SharpGLWinformsApp.Properties.Resources.resources
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\obj\x86\Debug\SharpGLWinformsApp.SharpGLForm.resources
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\obj\x86\Debug\SharpGLWinformsApp.csproj.GenerateResource.Cache
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\obj\x86\Debug\SharpGLWinformsApplication1.exe
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\obj\x86\Debug\SharpGLWinformsApplication1.pdb
+D:\Универ\ТПИС\SharpGLWinformsApplication1\SharpGLWinformsApplication1\obj\x86\Debug\SharpGLWinformsApp.csprojResolveAssemblyReference.cache
