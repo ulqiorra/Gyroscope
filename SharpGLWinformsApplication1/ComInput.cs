@@ -15,11 +15,12 @@ namespace SharpGLWinformsApp
             c.mainMethod();
         }
 
-        public static float osX = 0.0f;
-        public static float osY = 0.0f;
-        public static float osZ = 0.0f;
-
-        private System.Object lockThis = new System.Object();
+        public class Coordinates
+        {
+            public static float osX = 0.0f;
+            public static float osY = 0.0f;
+            public static float osZ = 0.0f;
+        }
 
         public void mainMethod()
         {
@@ -29,8 +30,8 @@ namespace SharpGLWinformsApp
             mySerialPort.Parity = Parity.None;
             mySerialPort.StopBits = StopBits.One;
             mySerialPort.DataBits = 8;
-            mySerialPort.Handshake = Handshake.RequestToSend;
-
+            mySerialPort.Handshake = Handshake.None;
+            
             mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             mySerialPort.ErrorReceived += new SerialErrorReceivedEventHandler(ErrorReceived);
@@ -44,14 +45,26 @@ namespace SharpGLWinformsApp
                 SerialPort sp = (SerialPort)sender;
                 string indata = sp.ReadExisting();
 
+                Coordinates coordinates = new Coordinates();
+
+                lock(coordinates)
+                {
+
                 Parser p = new Parser();
-                osX = p.getAngleX(indata);
-                osY = p.getAngleY(indata);
-                osZ = p.getAngleZ(indata);
+                Coordinates.osX = p.getAngleX(indata);
+                Coordinates.osY = p.getAngleY(indata);
+                Coordinates.osZ = p.getAngleZ(indata);
 
                 indata = null;
 
                 sp.DiscardInBuffer();
+                }
+
+                /*using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"D:\StringExample.txt", true))
+                {
+                    String callstackStr = Dbg.GetStackString();
+                    file.WriteLine(callstackStr);
+                } */
 
         }        
 

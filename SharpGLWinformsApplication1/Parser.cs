@@ -12,7 +12,8 @@ namespace SharpGLWinformsApp
             float angleX;
             int x;
             string data = "";
-            string patX = @"(\d{1,3}(?=\ Y\:)|\-\d{1,3}(?=\ Y\:))";
+            string patX = @"(-{0,1}\d{1,4}(?=\ Y\:))";
+            //string patX = @"(\d{1,3}(?=\ Y\:)|\-\d{1,3}(?=\ Y\:))";
 
             Regex r = new Regex(patX, RegexOptions.IgnoreCase);
 
@@ -24,7 +25,8 @@ namespace SharpGLWinformsApp
 
             x = Convert.ToInt32(data);
 
-            angleX = x * (180f / 204f);
+            angleX = x * (180f / 1240f);
+            //angleX = x * (180f / 204f);
 
             return angleX;
         }
@@ -34,7 +36,8 @@ namespace SharpGLWinformsApp
             float angleY;
             int y;
             string data = "";
-            string patY = @"(\d{1,3}(?=\ Z\:)|\-\d{1,3}(?=\ Z\:))";
+            string patY = @"(-{0,1}\d{1,4}(?=\ Z\:))";
+            //string patY = @"(\d{1,3}(?=\ Z\:)|\-\d{1,3}(?=\ Z\:))";
 
             Regex r = new Regex(patY, RegexOptions.IgnoreCase);
 
@@ -46,7 +49,8 @@ namespace SharpGLWinformsApp
 
             y = Convert.ToInt32(data);
 
-            angleY = y * (180f / 204f);
+            angleY = y * (180f / 1240f);
+            //angleY = y * (180f / 204f);
 
             return angleY;
         }
@@ -56,7 +60,8 @@ namespace SharpGLWinformsApp
             float angleZ;
             int z;
             string data = "";
-            string patZ = @"(?<=Z:)((\d{1,3})|(\-\d{1,3}))";
+            string patZ = @"(?<=Z:)(-{0,1}\d{1,4})";
+            //string patZ = @"(?<=Z:)((\d{1,3})|(\-\d{1,3}))";
 
             Regex r = new Regex(patZ, RegexOptions.IgnoreCase);
 
@@ -68,7 +73,8 @@ namespace SharpGLWinformsApp
 
             z = Convert.ToInt32(data);
 
-            angleZ = z * (180f / 204f);
+            angleZ = z * (180f / 1240f);
+            //angleZ = z * (180f / 204f);
 
             return angleZ;
         }

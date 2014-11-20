@@ -135,7 +135,7 @@ namespace SharpGLWinformsApp
             //-------------------Angle indicator prototype is here----------------------------------------------
             gl.LoadIdentity();
 
-            gl.Rotate(ComInput.osX, 1.0f, 0.0f, 0.0f);
+            gl.Rotate(ComInput.Coordinates.osX, 1.0f, 0.0f, 0.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -147,7 +147,7 @@ namespace SharpGLWinformsApp
 
             gl.LoadIdentity();
 
-            gl.Rotate(ComInput.osY, 0.0f, 1.0f, 0.0f);
+            gl.Rotate(ComInput.Coordinates.osY, 0.0f, 1.0f, 0.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -159,7 +159,7 @@ namespace SharpGLWinformsApp
 
             gl.LoadIdentity();
 
-            gl.Rotate(ComInput.osZ, 0.0f, 0.0f, 1.0f);
+            gl.Rotate(ComInput.Coordinates.osZ, 0.0f, 0.0f, 1.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -313,23 +313,23 @@ namespace SharpGLWinformsApp
 
         private void ModelRotater(OpenGL testObject)
         {
-            testObject.Rotate(ComInput.osX, 1.0f, 0.0f, 0.0f); //ComInput.osX
-            testObject.Rotate(ComInput.osY, 0.0f, 1.0f, 0.0f);
-            testObject.Rotate(ComInput.osZ, 0.0f, 0.0f, 1.0f);
+            testObject.Rotate(ComInput.Coordinates.osX, 1.0f, 0.0f, 0.0f); //ComInput.osX
+            testObject.Rotate(ComInput.Coordinates.osY, 0.0f, 1.0f, 0.0f);
+            testObject.Rotate(ComInput.Coordinates.osZ, 0.0f, 0.0f, 1.0f);
 
 
             int h, w;
             h = openGLControl.Size.Height / 4;
             w = (openGLControl.Size.Width * 4) / 5;
-            string text = "x: " + ComInput.osX.ToString(); // +", " + ComInput.osY.ToString() + ", " + ComInput.osZ.ToString();
+            string text = "x: " + ComInput.Coordinates.osX.ToString(); // +", " + ComInput.osY.ToString() + ", " + ComInput.osZ.ToString();
             testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
 
             h = openGLControl.Size.Height / 5;
-            text = "y: " + ComInput.osY.ToString();
+            text = "y: " + ComInput.Coordinates.osY.ToString();
             testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
 
             h = (openGLControl.Size.Height * 3) / 20;
-            text = "z: " + ComInput.osZ.ToString();
+            text = "z: " + ComInput.Coordinates.osZ.ToString();
             testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
         }
 
