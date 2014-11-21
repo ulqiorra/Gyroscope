@@ -15,11 +15,41 @@ namespace SharpGLWinformsApp
             c.mainMethod();
         }
 
-        public class Coordinates
+        public static float fl = 0.0f;
+
+        public sealed class Coordinates
         {
-            public static float osX = 0.0f;
-            public static float osY = 0.0f;
-            public static float osZ = 0.0f;
+            private Coordinates() {}
+
+            private float osX = 0.0f;
+            private float osY = 0.0f;
+            private float osZ = 0.0f;
+            static readonly Coordinates _instance = new Coordinates();
+            public static Coordinates Instance
+            {
+                get
+                {
+                    return _instance;
+                }
+            }
+
+            public void setX(float x)
+            { this.osX = x; }
+
+            public float getX()
+            { return this.osX; }
+
+            public void setY(float y)
+            { this.osY = y; }
+
+            public float getY()
+            { return this.osY; }
+
+            public void setZ(float z)
+            { this.osZ = z; }
+
+            public float getZ()
+            { return this.osZ; }
         }
 
         public void mainMethod()
@@ -31,34 +61,41 @@ namespace SharpGLWinformsApp
             mySerialPort.StopBits = StopBits.One;
             mySerialPort.DataBits = 8;
             mySerialPort.Handshake = Handshake.None;
-            
+
             mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             mySerialPort.ErrorReceived += new SerialErrorReceivedEventHandler(ErrorReceived);
 
             mySerialPort.Open();
 
-        }        
+            while (true)
+            {
+                Thread.Sleep(1000);
+                fl++;
+                if (fl > 1000)
+                {
+                    fl = 0.0f;
+                }
+            }
+
+        }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         { 
                 SerialPort sp = (SerialPort)sender;
-                string indata = sp.ReadExisting();
+                string indata = sp.ReadExisting();    
 
-                Coordinates coordinates = new Coordinates();
-
-                lock(coordinates)
-                {
+                Coordinates cord = Coordinates.Instance;
 
                 Parser p = new Parser();
-                Coordinates.osX = p.getAngleX(indata);
-                Coordinates.osY = p.getAngleY(indata);
-                Coordinates.osZ = p.getAngleZ(indata);
+                cord.setX(p.getAngleX(indata));//Coordinates.osX = p.getAngleX(indata);
+                cord.setY(p.getAngleY(indata));//Coordinates.osY = p.getAngleY(indata);
+                cord.setZ(p.getAngleZ(indata));//Coordinates.osZ = p.getAngleZ(indata);                
 
-                indata = null;
+                indata = null; 
 
                 sp.DiscardInBuffer();
-                }
+               
 
                 /*using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"D:\StringExample.txt", true))
                 {

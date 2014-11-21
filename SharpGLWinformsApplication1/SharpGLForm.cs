@@ -15,6 +15,7 @@ namespace SharpGLWinformsApp
     public partial class SharpGLForm : Form
     {
         private static OpenGL gl;
+        ComInput.Coordinates cord;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SharpGLForm"/> class.
@@ -50,6 +51,7 @@ namespace SharpGLWinformsApp
 
             //  Rotate around the Y axis.
             //gl.Rotate(rotation, 0.0f, 1.0f, 0.0f);
+            cord = ComInput.Coordinates.Instance;
             this.ModelRotater(gl);
 
             gl.Enable(OpenGL.GL_BLEND);
@@ -135,7 +137,7 @@ namespace SharpGLWinformsApp
             //-------------------Angle indicator prototype is here----------------------------------------------
             gl.LoadIdentity();
 
-            gl.Rotate(ComInput.Coordinates.osX, 1.0f, 0.0f, 0.0f);
+            gl.Rotate(cord.getX(), 1.0f, 0.0f, 0.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -147,7 +149,7 @@ namespace SharpGLWinformsApp
 
             gl.LoadIdentity();
 
-            gl.Rotate(ComInput.Coordinates.osY, 0.0f, 1.0f, 0.0f);
+            gl.Rotate(cord.getY(), 0.0f, 1.0f, 0.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -159,7 +161,7 @@ namespace SharpGLWinformsApp
 
             gl.LoadIdentity();
 
-            gl.Rotate(ComInput.Coordinates.osZ, 0.0f, 0.0f, 1.0f);
+            gl.Rotate(cord.getZ(), 0.0f, 0.0f, 1.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -310,26 +312,31 @@ namespace SharpGLWinformsApp
         private float rotation = 0.0f;
       //  private float angleX = 0.0f, angleY = 0.0f, angleZ = 0.0f, x = 1;
       //  private int counter = 0;
+        
 
         private void ModelRotater(OpenGL testObject)
         {
-            testObject.Rotate(ComInput.Coordinates.osX, 1.0f, 0.0f, 0.0f); //ComInput.osX
-            testObject.Rotate(ComInput.Coordinates.osY, 0.0f, 1.0f, 0.0f);
-            testObject.Rotate(ComInput.Coordinates.osZ, 0.0f, 0.0f, 1.0f);
+            testObject.Rotate(cord.getX(), 1.0f, 0.0f, 0.0f); //ComInput.osX
+            testObject.Rotate(cord.getY(), 0.0f, 1.0f, 0.0f);
+            testObject.Rotate(cord.getZ(), 0.0f, 0.0f, 1.0f);
 
 
             int h, w;
             h = openGLControl.Size.Height / 4;
             w = (openGLControl.Size.Width * 4) / 5;
-            string text = "x: " + ComInput.Coordinates.osX.ToString(); // +", " + ComInput.osY.ToString() + ", " + ComInput.osZ.ToString();
+            string text = "x: " + cord.getX().ToString(); // +", " + ComInput.osY.ToString() + ", " + ComInput.osZ.ToString();
             testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
 
             h = openGLControl.Size.Height / 5;
-            text = "y: " + ComInput.Coordinates.osY.ToString();
+            text = "y: " + cord.getY().ToString();
             testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
 
             h = (openGLControl.Size.Height * 3) / 20;
-            text = "z: " + ComInput.Coordinates.osZ.ToString();
+            text = "z: " + cord.getZ().ToString();
+            testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
+
+            h = openGLControl.Size.Height / 10;
+            text = "Work time: " + ComInput.fl.ToString();
             testObject.DrawText(w, h, 1, 1, 1, "faceName", 20, text);
         }
 

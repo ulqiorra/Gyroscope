@@ -16,7 +16,9 @@ namespace SharpGLWinformsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new Thread(ComInput.go).Start();
+            Thread thread = new Thread(ComInput.go);
+            thread.Start();
+            //new Thread(ComInput.go).Start();
             Application.Run(new SharpGLForm());
             
         }
