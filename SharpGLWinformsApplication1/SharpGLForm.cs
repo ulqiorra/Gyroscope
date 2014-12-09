@@ -149,7 +149,7 @@ namespace SharpGLWinformsApp
 
             gl.LoadIdentity();
 
-            gl.Rotate(cord.getY(), 0.0f, 1.0f, 0.0f);
+            gl.Rotate(cord.getZ(), 0.0f, 1.0f, 0.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -161,7 +161,7 @@ namespace SharpGLWinformsApp
 
             gl.LoadIdentity();
 
-            gl.Rotate(cord.getZ(), 0.0f, 0.0f, 1.0f);
+            gl.Rotate(cord.getY(), 0.0f, 0.0f, 1.0f);
 
             gl.Begin(OpenGL.GL_TRIANGLES);
 
@@ -316,9 +316,9 @@ namespace SharpGLWinformsApp
 
         private void ModelRotater(OpenGL testObject)
         {
-            testObject.Rotate(cord.getX(), 1.0f, 0.0f, 0.0f); //ComInput.osX
-            testObject.Rotate(cord.getY(), 0.0f, 1.0f, 0.0f);
-            testObject.Rotate(cord.getZ(), 0.0f, 0.0f, 1.0f);
+            testObject.Rotate(cord.getX(), 1.0f, 0.0f, 0.0f); //cord.getX()
+            testObject.Rotate(cord.getZ(), 0.0f, 1.0f, 0.0f); //cord.getZ()
+            testObject.Rotate(cord.getY(), 0.0f, 0.0f, 1.0f); //cord.getY()
 
 
             int h, w;

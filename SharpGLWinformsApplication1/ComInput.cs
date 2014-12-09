@@ -83,14 +83,29 @@ namespace SharpGLWinformsApp
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         { 
                 SerialPort sp = (SerialPort)sender;
-                string indata = sp.ReadExisting();    
+                string indata = sp.ReadExisting();
+                double tempX, tempY, tempZ, X, Y, Z;
 
                 Coordinates cord = Coordinates.Instance;
 
                 Parser p = new Parser();
-                cord.setX(p.getAngleX(indata));//Coordinates.osX = p.getAngleX(indata);
-                cord.setY(p.getAngleY(indata));//Coordinates.osY = p.getAngleY(indata);
-                cord.setZ(p.getAngleZ(indata));//Coordinates.osZ = p.getAngleZ(indata);                
+
+                tempX = p.getAngleX(indata);
+                tempY = p.getAngleY(indata);
+                tempZ = p.getAngleZ(indata);
+
+                //X = Math.Atan(1);
+                X = Math.Atan(tempX / Math.Sqrt(Math.Pow(tempY, 2) + Math.Pow(tempZ, 2))) / 0.01744;
+                Y = Math.Atan(tempY / Math.Sqrt(Math.Pow(tempX, 2) + Math.Pow(tempZ, 2))) / 0.01744;
+                Z = Math.Atan(tempZ / Math.Sqrt(Math.Pow(tempX, 2) + Math.Pow(tempY, 2))) / 0.01744;
+
+                //if (tempY * tempZ < 0) { X = X * (-1); }
+                //if (tempX * tempZ < 0) { Y = Y * (-1); }
+                //if (tempX * tempY < 0) { Z = Z * (-1); }
+
+                cord.setX((float)X);//Coordinates.osX = p.getAngleX(indata);
+                cord.setY((float)Y);//Coordinates.osY = p.getAngleY(indata);
+                cord.setZ((float)Z);//Coordinates.osZ = p.getAngleZ(indata);                
 
                 indata = null; 
 

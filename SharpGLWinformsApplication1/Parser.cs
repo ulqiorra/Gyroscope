@@ -7,9 +7,9 @@ namespace SharpGLWinformsApp
 {
     class Parser
     {
-        public float getAngleX(string coordinates)
+        public double getAngleX(string coordinates)
         {
-            float angleX;
+            double angleX;
             int x;
             string data = "";
             string patX = @"(-{0,1}\d{1,4}(?=\ Y\:))";
@@ -25,15 +25,16 @@ namespace SharpGLWinformsApp
 
             x = Convert.ToInt32(data);
 
-            angleX = x * (180f / 1240f);
-            //angleX = x * (180f / 204f);
+            //angleX = x; 
+            angleX = x * (9.8f / 1030f);
+            
 
             return angleX;
         }
 
-        public float getAngleY(string coordinates)
+        public double getAngleY(string coordinates)
         {
-            float angleY;
+            double angleY;
             int y;
             string data = "";
             string patY = @"(-{0,1}\d{1,4}(?=\ Z\:))";
@@ -49,15 +50,15 @@ namespace SharpGLWinformsApp
 
             y = Convert.ToInt32(data);
 
-            angleY = y * (180f / 1240f);
-            //angleY = y * (180f / 204f);
+            //angleY = y;
+            angleY = y * (9.8f / 1030f); 
 
             return angleY;
         }
 
-        public float getAngleZ(string coordinates)
+        public double getAngleZ(string coordinates)
         {
-            float angleZ;
+            double angleZ;
             int z;
             string data = "";
             string patZ = @"(?<=Z:)(-{0,1}\d{1,4})";
@@ -73,8 +74,8 @@ namespace SharpGLWinformsApp
 
             z = Convert.ToInt32(data);
 
-            angleZ = z * (180f / 1240f);
-            //angleZ = z * (180f / 204f);
+            //angleZ = z; 
+            angleZ = z * (9.8f / 1030f); ; 
 
             return angleZ;
         }
